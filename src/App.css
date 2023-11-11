@@ -1,22 +1,5 @@
 /* App.css */
-
-  
-  /* Taustaväri */
-  body {
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Määritä otsikon ja navigaation ulkoasu */
-  header {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  header h1 {
-    font-size: 36px;
-  }
+@import '~bootstrap/dist/css/bootstrap.min.css';
 
   main {
     max-width: 960px;
@@ -24,30 +7,8 @@
     padding: 20px;
   }
   
-  /* Tyyli suosituimmille tuotteille */
-  .tuotteet {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .tuote {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    text-align: center;
-    width: 200px;
-  }
-  
-  .tuote img {
-    max-width: 100%;
-    height: auto;
-  }
-  
   /* Alatunnisteen tyyli */
   footer {
-    background-color: #333;
-    color: #fff;
     text-align: center;
     padding: 10px 0;
     position: fixed;

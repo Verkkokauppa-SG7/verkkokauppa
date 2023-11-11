@@ -3,7 +3,7 @@ import React from 'react'
 export default function Footer() {
   return (
     <footer>
-        <p>&copy; 2023 SG7-Verkkokauppa</p>
+        <p>Copyright &copy; TIK23KM Ryhmä 7</p>
       </footer>
   )
 }
