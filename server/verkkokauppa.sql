@@ -2,23 +2,18 @@ DROP TABLE IF EXISTS order_line;
 DROP TABLE IF EXISTS customer_order;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS product;
-DROP TABLE IF EXISTS Tuotekategoriat;
 
-CREATE TABLE Tuotekategoriat(
-    category_name VARCHAR(255) NOT NULL PRIMARY KEY,
-    category_description VARCHAR(500)
-);
 
-CREATE TABLE product(
+CREATE TABLE Tuote(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     product_name VARCHAR(255) NOT NULL,
     price DECIMAL(10,2),
     image_url VARCHAR(255),
     category VARCHAR(255),
-    FOREIGN KEY (category) REFERENCES product_category(category_name)
+    FOREIGN KEY (category) REFERENCES Tuotekategoriat(category_name)
 );
 
-CREATE TABLE customer(
+CREATE TABLE Asiakas(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -26,26 +21,27 @@ CREATE TABLE customer(
     pw VARCHAR(255)
 );
 
-CREATE TABLE customer_order(
+CREATE TABLE Asiakas_tilaus(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     order_date DATETIME NOT NULL,
     customer_id INT,
-    FOREIGN KEY (customer_id) REFERENCES customer(id)
+    FOREIGN KEY (customer_id) REFERENCES Asiakas(id)
 );
 
-CREATE TABLE order_line(
+CREATE TABLE Tilaus_jono(
     order_id INT,
     product_id INT,
     quantity INT,
     PRIMARY KEY (order_id, product_id),
-    FOREIGN KEY (order_id) REFERENCES customer_order(id),
-    FOREIGN KEY (product_id) REFERENCES product(id)
+    FOREIGN KEY (order_id) REFERENCES Asiakas_tilaus(id),
+    FOREIGN KEY (product_id) REFERENCES Tuote(id)
 );
 
 
-INSERT INTO product_category VALUES ('Computers', 'Laptop and desktop computers'),
-('Sports', 'Sport equipment'),('Bikes', 'City and MTB bikes'),('Music', 'Guitars, drums and other instruments'), ('Phones', 'Mobile devices for all uses');
+INSERT INTO Tuotekategoriat(category_name, category_description) VALUES ('Paidat', 'Pitkähihaisia ja lyhythihaisia paitoja'),
+('Housut', 'Housuja ja shortseja'),('Alusvaatteet', 'Erilaisia alusvaatteita'),('Takit', 'Luontoon ja kaduille takkeja'), ('Hatut', 'Moneen eri vuodenaikaan sopivia päähineitä');
 
 
-INSERT INTO product (product_name, price, category) VALUES ('Macbook Pro 13', 1200, 'Computers'),('iPhone 13', 700, 'Phones'), ('Umbro football', 25, 'Sports'),
-('Fender Stratocaster', 1550, 'Music'), ('Gipson Les Paul', 2100, 'Music'), ('Google Pixel', 780, 'Phones');
+INSERT INTO Tuote (product_name, price, category) VALUES ('Trenssitakki', 120, 'Takit'),('Villa pipo', 30, 'Hatut'), ('Abibas Huppari', 55, 'Paidat'),
+('Mustat farkut', 79, 'Housut'), ('Bokserit', 10, 'Alusvaatteet'), ('Punainen t-paita', 20, 'Paidat'), ('Toppi', 15, 'Paidat'), ('Treenishortsit', 25, 'Housut'),
+('Lippalakki', 15, 'Hatut'), ('Kevyt untuvatakki', 100, 'Takit');
