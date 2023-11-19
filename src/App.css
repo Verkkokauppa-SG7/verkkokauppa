@@ -3,12 +3,14 @@
 
   main {
     max-width: 960px;
+    min-height: 100%;
     margin: 0 auto;
     padding: 20px;
   }
   
   /* Alatunnisteen tyyli */
   footer {
+    background-color: #ffffff;
     text-align: center;
     padding: 10px 0;
     position: fixed;

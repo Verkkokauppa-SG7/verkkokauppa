@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import './App.css';
 import Categories from './components/Categories';
 import ProductList from './components/ProductList';
+import FrontPage from './components/FrontPage';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
           </Routes>
       </div>
+      <FrontPage />
       <Footer />
       </>
   );
