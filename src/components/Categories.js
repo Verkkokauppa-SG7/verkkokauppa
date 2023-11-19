@@ -1,13 +1,14 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Categories.css'; 
 
-// Create your functional component
+// Fetching and returning categories with link to products in category
 const Categories = () => {
   // Set up state to store the fetched data
   const [data, setData] = useState([]);
 
-  // Use the useEffect hook to fetch data when the component mounts
+  // Fetching categories
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,11 +29,14 @@ const Categories = () => {
   // Render the component with the fetched data
   return (
     <div>
-      <h1></h1>
       <ul>
         {data.map((category, index) => (
           <li key={index}>
-            <h2>{category.categoryName}</h2>
+            {console.log('Link to:', `/tuotteet/${category.categoryName}`)}
+            {/* Use Link to navigate to the product page */}
+            <Link to={`/tuotteet/${category.categoryName}`}>
+              <h2>{category.categoryName}</h2>
+            </Link>
             <p>{category.description}</p>
           </li>
         ))}
