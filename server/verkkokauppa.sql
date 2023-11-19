@@ -3,9 +3,12 @@ DROP TABLE IF EXISTS customer_order;
 DROP TABLE IF EXISTS customer;
 DROP TABLE IF EXISTS product;
 DROP TABLE IF EXISTS Tuotekategoriat;
+DROP TABLE IF EXISTS product_category;
 
-CREATE TABLE Tuotekategoriat(
-    category_name VARCHAR(255) NOT NULL PRIMARY KEY,
+CREATE TABLE product_category(
+    category_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    category_name VARCHAR(255) NOT NULL,
+    category_type VARCHAR(255),
     category_description VARCHAR(500)
 );
 
@@ -47,5 +50,5 @@ INSERT INTO product_category VALUES ('Computers', 'Laptop and desktop computers'
 ('Sports', 'Sport equipment'),('Bikes', 'City and MTB bikes'),('Music', 'Guitars, drums and other instruments'), ('Phones', 'Mobile devices for all uses');
 
 
-INSERT INTO product (product_name, price, category) VALUES ('Macbook Pro 13', 1200, 'Computers'),('iPhone 13', 700, 'Phones'), ('Umbro football', 25, 'Sports'),
+INSERT INTO product (id, product_name, price, category) VALUES ('', Paidat, ''),('iPhone 13', 700, 'Phones'), ('Umbro football', 25, 'Sports'),
 ('Fender Stratocaster', 1550, 'Music'), ('Gipson Les Paul', 2100, 'Music'), ('Google Pixel', 780, 'Phones');

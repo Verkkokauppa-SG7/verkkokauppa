@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ProductList = () => {
-  const {categoryName} = useParams;
-  console.log('Received categoryName:', categoryName);
+  const {categoryType} = useParams;
+  console.log('Received categoryType:', categoryType);
   
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log('Route transitioned to:', categoryName);
+    console.log('Route transitioned to:', categoryType);
     const fetchProducts = async () => {
       try {
         // Fetch products by category
-        const response = await fetch(`http://localhost:3001/products?category=${categoryName}`)
+        const response = await fetch(`http://localhost:3001/products?category_type=${categoryType}`)
         const jsonData = await response.json();
         setProducts(jsonData);
         console.log(jsonData);
@@ -23,16 +23,16 @@ const ProductList = () => {
     };
 
     fetchProducts();
-  }, [categoryName]);
+  }, [categoryType]);
 
     // Check if products are available before rendering
     if (!products || products.length === 0) {
-      return <div>No products available for {categoryName}</div>;
+      return <div>No products available for {categoryType}</div>;
     }
 
   return (
     <div>
-      <h1>Tuotteet tuoreyhmässä {categoryName}</h1>
+      <h1>Tuotteet tuoteryhmässä {categoryType}</h1>
       <ul>
         {products.map((product, index) => (
           <li key={index}>

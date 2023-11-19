@@ -1,0 +1,21 @@
+/* Navbar css */
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+
+h2 { 
+    margin-top: 80px;
+    text-transform: uppercase; 
+    
+}
+nav {
+    padding: 5px;
+    text-transform: uppercase;
+    font-family: 'Arimo';
+    font-size: 25px;
+}
+
+li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 100px;
+}
