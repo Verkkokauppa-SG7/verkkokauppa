@@ -12,7 +12,7 @@ const Categories = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch data from endpoint
+        // Replace 'your-api-endpoint' with the actual URL of your REST API
         const response = await fetch('http://localhost:3001/categories');
         const jsonData = await response.json();
         setData(jsonData);
@@ -32,12 +32,12 @@ const Categories = () => {
       <ul>
         {data.map((category, index) => (
           <li key={index}>
-            {console.log('Link to:', `/tuotteet/${category.categoryType}`)}
+            {console.log('Link to:', `/tuotteet/${category.categoryName}`)}
             {/* Use Link to navigate to the product page */}
             <Link to={`/tuotteet/${category.categoryName}`}>
-              <h2>{category.categoryType}</h2>
+              <h2>{category.categoryName}</h2>
             </Link>
-            <p>{category.categoryType}</p>
+            <p>{category.description}</p>
           </li>
         ))}
       </ul>

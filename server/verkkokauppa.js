@@ -43,14 +43,14 @@ app.get('/products', async (req, res) => {
     try {
         const connection = await mysql.createConnection(conf);
 
-        const category = req.query.category;
+        const category_type = req.query.category_type;
 
         let result;        
 
-        if(category){
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category  FROM product WHERE category=?", [category]);
+        if(category_type){
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type categoryType FROM product WHERE category_type=?", [category_type]);
         }else{
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category  FROM product");
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type categoryType FROM product");
         }
         
         //First index in the result contains the rows in an array
@@ -65,12 +65,15 @@ app.get('/products', async (req, res) => {
 /**
  * Gets all the categories
  */
+
 app.get('/categories', async (req, res) => {
 
     try {
         const connection = await mysql.createConnection(conf);
 
-        const [rows] = await connection.execute("SELECT category_name categoryName, category_description description FROM product_category");
+        /*const [rows] = await connection.execute("SELECT category_name categoryName, category_description description FROM product_category");*/
+
+        const [rows] = await connection.execute("SELECT category_type categoryType, category_name categoryName, category_description description FROM product_category");
 
         res.json(rows);
 
@@ -78,6 +81,7 @@ app.get('/categories', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 
 app.get('/customer', async(req,res) => {
 
