@@ -38,6 +38,7 @@ const ProductList = () => {
           <li key={index}>
             <h2>{product.productName}</h2>
             <p>{product.description}</p>
+            <p>{product.price}</p>
           </li>
         ))}
       </ul>

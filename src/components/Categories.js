@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Categories.css'; 
 
 // Fetching and returning categories with link to products in category
-const Categories = () => {
+const Categories = ({categoryType}) => {
   // Set up state to store the fetched data
   const [data, setData] = useState([]);
 
@@ -26,11 +26,13 @@ const Categories = () => {
     fetchData();
   }, []); // The empty dependency array ensures that this effect runs only once, similar to componentDidMount
 
-  // Render the component with the fetched data
+  // Suodatetaan tuotekategoriat
+  const filteredCategories = data.filter((category) => category.categoryType === categoryType)
+
   return (
     <div>
       <ul>
-        {data.map((category, index) => (
+        {filteredCategories.map((category, index) => (
           <li key={index}>
             {console.log('Link to:', `/tuotteet/${category.categoryType}`)}
             {/* Use Link to navigate to the product page */}
