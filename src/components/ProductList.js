@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ProductList = () => {
-  const {categoryName} = useParams;
+  const {categoryName} = useParams();
   console.log('Received categoryName:', categoryName);
   
   const [products, setProducts] = useState([]);
@@ -32,12 +32,13 @@ const ProductList = () => {
 
   return (
     <div>
-      <h1>Tuotteet tuoreyhmässä {categoryName}</h1>
+      <h1>Tuotteet tuoteryhmässä {categoryName}</h1>
       <ul>
         {products.map((product, index) => (
           <li key={index}>
             <h2>{product.productName}</h2>
             <p>{product.description}</p>
+            <p>{product.price}</p>
           </li>
         ))}
       </ul>

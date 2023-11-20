@@ -1,12 +1,12 @@
 import Navbar from './components/Navbar';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
-import Categories from './components/Categories';
 import ProductList from './components/ProductList';
-import FrontPage from './components/FrontPage';
+import FrontPage from './pages/FrontPage';
+import WomenCategories from './components/WomenCategories';
+import MenCategories from './components/MenCategories';
 
 function App() {
 
@@ -16,12 +16,12 @@ function App() {
       <Navbar />
       <div className='container'>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/vaatteet" element={<Categories />} />
+            <Route path="/" element={<FrontPage />} />
+            <Route path="/vaatteet/naiset" element={<WomenCategories />} />
+            <Route path="/vaatteet/miehet" element={<MenCategories />} />
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
           </Routes>
       </div>
-      <FrontPage />
       <Footer />
       </>
   );
