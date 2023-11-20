@@ -9,6 +9,7 @@ import MenComponent from './components/MenComponent';
 import WomenComponent from './components/WomenComponent';
 import UnisexComponent from './components/UnisexComponent';
 import FrontPage from './pages/FrontPage';
+import ShoppingCart from './components/ShoppingCart.js';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/vaatteet/miehet" element={<MenComponent />} />
             <Route path="/vaatteet/naiset" element={<WomenComponent />} />
             <Route path="/unisex" element={<UnisexComponent />} />
+            <Route path='/ostoskori' element={<ShoppingCart />} />
           </Routes>
       </div>
       <Footer />
