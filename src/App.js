@@ -8,6 +8,7 @@ import PresetCategories from './pages/PresetCategories';
 import MenComponent from './components/MenComponent';
 import WomenComponent from './components/WomenComponent';
 import UnisexComponent from './components/UnisexComponent';
+import FrontPage from './pages/FrontPage';
 
 function App() {
 
@@ -17,11 +18,11 @@ function App() {
       <Navbar />
       <div className='container'>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<FrontPage />} />
             <Route path="/vaatteet" element={<PresetCategories />} />
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
-            <Route path="/miehet" element={<MenComponent />} />
-            <Route path="/naiset" element={<WomenComponent />} />
+            <Route path="/vaatteet/miehet" element={<MenComponent />} />
+            <Route path="/vaatteet/naiset" element={<WomenComponent />} />
             <Route path="/unisex" element={<UnisexComponent />} />
           </Routes>
       </div>
