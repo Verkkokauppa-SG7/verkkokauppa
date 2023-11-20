@@ -20,7 +20,7 @@ function App() {
       <div className='container'>
           <Routes>
             <Route path="/" element={<FrontPage />} />
-            <Route path="/vaatteet" element={<PresetCategories />} />
+            <Route path="/tuoteryhmät" element={<PresetCategories />} />
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
             <Route path="vaatteet/miehet" element={<MenComponent />} />
             <Route path="/vaatteet/naiset" element={<WomenComponent />} />

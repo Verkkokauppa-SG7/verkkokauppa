@@ -12,6 +12,7 @@ export default function Menu() {
                     <Nav className="mx-auto">
                         <Nav.Link as={Link} to="/">Etusivu</Nav.Link>
                         <Nav.Link as={Link} to="/meista">Meistä</Nav.Link>
+                        <Nav.Link as={Link} to="/tuoteryhmät">Tuoteryhmät</Nav.Link>
                         <NavDropdown title="Vaatteet" className="custom-dropdown">
                             <NavDropdown.Item as={Link} to="/vaatteet/naiset">Naiset</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/vaatteet/miehet">Miehet</NavDropdown.Item>
