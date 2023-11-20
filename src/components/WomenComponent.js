@@ -8,30 +8,30 @@ const WomenComponent = () => {
 
   useEffect(() => {
     // Fetch data from the API endpoint
-    fetch('http://localhost:3001/categories?category_type=Naiset')
+    fetch('http://localhost:3001/products?category_type=Naiset')
       .then((response) => response.json())
-      .then((result) => setData(result))
-      .catch((error) => console.error('Error fetching Women data:', error));
+      .then((result) => {
+        // Ensure result is an array before setting the state
+        if (Array.isArray(result)) {
+          setData(result);
+        } else {
+          console.error('Invalid data format received:', result);
+        }
+      })
+      .catch((error) => console.error('Error fetching Men data:', error));
   }, []);
-
-  // Only category to show 
-  const targetCategory = 'Naiset';
-
-  // Filter the data to include only items from the target category
-  const filteredData = data.filter((category) => category.categoryType === targetCategory);
-
+      /*.then((result) => setData(result))
+      .catch((error) => console.error('Error fetching Men data:', error));
+  }, []);*/
 
   return (
     <div>
       <h2>Naisten vaatteet</h2>
       <ul>
-        {filteredData.map((category) => (
-          <li key={category.categoryName}>
-            {/* Use Link to navigate to the product page */}
-            <Link to={`/tuotteet/${category.categoryName}`}>
-              <h2>{category.categoryName}</h2>
-            </Link>
-            <p>{category.description}</p>
+        {data.map((product) => (
+          <li key={product.productId}>
+            <h2>{product.productName}</h2>
+            <p>Hinta {product.price}</p>
           </li>
         ))}
       </ul>

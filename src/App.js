@@ -21,7 +21,7 @@ function App() {
             <Route path="/" element={<FrontPage />} />
             <Route path="/vaatteet" element={<PresetCategories />} />
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
-            <Route path="/vaatteet/miehet" element={<MenComponent />} />
+            <Route path="vaatteet/miehet" element={<MenComponent />} />
             <Route path="/vaatteet/naiset" element={<WomenComponent />} />
             <Route path="/unisex" element={<UnisexComponent />} />
           </Routes>
