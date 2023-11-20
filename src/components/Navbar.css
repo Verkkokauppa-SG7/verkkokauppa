@@ -7,3 +7,27 @@ nav {
     font-family: 'Arimo';
     font-size: 25px;
 }
+
+.custom-dropdown  {
+    background-color: transparent;
+    font-family: 'Arimo';
+    font-size: 25px;
+}
+
+.custom-dropdown .nav-link {
+    padding: 0.5rem 1rem;
+    border: none;
+}
+
+.custom-dropdown .nav-link:hover {
+    background-color: transparent;
+}
+
+.custom-dropdown .dropdown-menu {
+    border: none;
+    box-shadow: none;
+}
+
+.custom-dropdown .nav-link::after {
+    display: none;
+}

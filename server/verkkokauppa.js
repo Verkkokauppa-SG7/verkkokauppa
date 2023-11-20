@@ -48,9 +48,9 @@ app.get('/products', async (req, res) => {
         let result;        
 
         if(category){
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category  FROM product WHERE category=?", [category]);
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type categoryType  FROM product WHERE category=?", [category]);
         }else{
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category  FROM product");
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type  FROM product");
         }
         
         //First index in the result contains the rows in an array
@@ -70,7 +70,7 @@ app.get('/categories', async (req, res) => {
     try {
         const connection = await mysql.createConnection(conf);
 
-        const [rows] = await connection.execute("SELECT category_name categoryName, category_description description FROM product_category");
+        const [rows] = await connection.execute("SELECT category_name categoryName, category_description description, category_type categoryType FROM product_category");
 
         res.json(rows);
 
