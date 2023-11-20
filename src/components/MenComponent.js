@@ -9,9 +9,19 @@ const MenComponent = () => {
     // Fetch data from the API endpoint
     fetch('http://localhost:3001/products?category_type=Miehet')
       .then((response) => response.json())
-      .then((result) => setData(result))
+      .then((result) => {
+        // Ensure result is an array before setting the state
+        if (Array.isArray(result)) {
+          setData(result);
+        } else {
+          console.error('Invalid data format received:', result);
+        }
+      })
       .catch((error) => console.error('Error fetching Men data:', error));
   }, []);
+      /*.then((result) => setData(result))
+      .catch((error) => console.error('Error fetching Men data:', error));
+  }, []);*/
 
   return (
     <div>
@@ -19,11 +29,8 @@ const MenComponent = () => {
       <ul>
         {data.map((product) => (
           <li key={product.productId}>
-            {/* Use Link to navigate to the product page */}
-            <Link to={`/tuotteet/${product.productId}`}>
-              <h2>{product.productName}</h2>
-            </Link>
-            <p>{product.description}</p>
+            <h2>{product.productName}</h2>
+            <p>Hinta {product.price}</p>
           </li>
         ))}
       </ul>
