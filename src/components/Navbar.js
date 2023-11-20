@@ -1,9 +1,7 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import './Navbar.css'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
+import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function Menu() {
     return (
@@ -14,7 +12,10 @@ export default function Menu() {
                     <Nav className="mx-auto">
                         <Nav.Link as={Link} to="/">Etusivu</Nav.Link>
                         <Nav.Link as={Link} to="/meista">Meistä</Nav.Link>
-                        <Nav.Link as={Link} to="/vaatteet">Vaatteet</Nav.Link>
+                        <NavDropdown title="Vaatteet" className="custom-dropdown">
+                            <NavDropdown.Item as={Link} to="/vaatteet/naiset">Naiset</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/vaatteet/miehet">Miehet</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
