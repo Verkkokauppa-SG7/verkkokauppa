@@ -20,7 +20,11 @@ function App() {
       <div className='container'>
           <Routes>
             <Route path="/" element={<FrontPage />} />
+<<<<<<< HEAD
             <Route path="/vaatteet" element={<PresetCategories />} />
+=======
+            <Route path="/tuoteryhmät" element={<PresetCategories />} />
+>>>>>>> cec5ce1685707f448ae33b10c0cdfdc9c460205b
             <Route path="/tuotteet/:categoryName" element={<ProductList />} />
             <Route path="vaatteet/miehet" element={<MenComponent />} />
             <Route path="/vaatteet/naiset" element={<WomenComponent />} />
