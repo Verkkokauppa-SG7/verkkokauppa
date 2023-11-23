@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Categories.css'; 
+import { useParams } from 'react-router-dom';
 
 // Fetching and returning categories with link to products in category
-const Categories = () => {
+const Categoriesbyname = () => {
   // Set up state to store the fetched data
+  const {category_type} = useParams();
+  console.log('Received category_type:', category_type);
   const [data, setData] = useState([]);
 
   // Fetching categories
@@ -13,7 +16,7 @@ const Categories = () => {
     const fetchData = async () => {
       try {
         // Replace 'your-api-endpoint' with the actual URL of your REST API
-        const response = await fetch('http://localhost:3001/categories');
+        const response = await fetch(`http://localhost:3001/categories?category_type=${category_type}`);
         const jsonData = await response.json();
         setData(jsonData);
         console.log(jsonData);
@@ -29,12 +32,13 @@ const Categories = () => {
   // Render the component with the fetched data
   return (
     <div>
+      <h1>Tuoteryhmät {category_type} {} </h1>
       <ul>
         {data.map((category, index) => (
           <li key={index}>
-            {console.log('Link to:', `/tuotteet/${category.categoryName}`)}
+            {console.log('Link to:', `/tuotteet/${category.category_type}`)}
             {/* Use Link to navigate to the product page */}
-            <Link to={`/tuotteet/${category.categoryName}`}>
+            <Link to={`/tuotteet/${category_type}`}>
               <h2>{category.categoryName}</h2>
             </Link>
             <p>{category.description}</p>
@@ -46,4 +50,4 @@ const Categories = () => {
 };
 
 // Export your component for use in other parts of your application
-export default Categories;
+export default Categoriesbyname;

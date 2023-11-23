@@ -18,7 +18,7 @@ const WomenComponent = () => {
           console.error('Invalid data format received:', result);
         }
       })
-      .catch((error) => console.error('Error fetching Men data:', error));
+      .catch((error) => console.error('Error fetching women data:', error));
   }, []);
       /*.then((result) => setData(result))
       .catch((error) => console.error('Error fetching Men data:', error));

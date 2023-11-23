@@ -6,6 +6,7 @@ import './App.css';
 import ProductList from './components/ProductList';
 import PresetCategories from './pages/PresetCategories';
 import MenComponent from './components/MenComponent';
+import Categoriesbyname from './components/Categoriesbyname.js';
 import WomenComponent from './components/WomenComponent';
 import UnisexComponent from './components/UnisexComponent';
 import FrontPage from './pages/FrontPage';
@@ -20,12 +21,9 @@ function App() {
       <div className='container'>
           <Routes>
             <Route path="/" element={<FrontPage />} />
-            <Route path="/vaatteet" element={<PresetCategories />} />
             <Route path="/tuoteryhmät" element={<PresetCategories />} />
-            <Route path="/tuotteet/:categoryName" element={<ProductList />} />
-            <Route path="vaatteet/miehet" element={<MenComponent />} />
-            <Route path="/vaatteet/naiset" element={<WomenComponent />} />
-            <Route path="/unisex" element={<UnisexComponent />} />
+            <Route path="/tuotteet/:category_type" element={<ProductList />} />
+            <Route path="vaatteet/:category_type" element={<Categoriesbyname />} />
             <Route path='/ostoskori' element={<ShoppingCart />} />
           </Routes>
       </div>

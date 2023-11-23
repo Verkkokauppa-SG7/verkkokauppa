@@ -16,6 +16,7 @@ export default function Menu() {
                         <NavDropdown title="Vaatteet" className="custom-dropdown">
                             <NavDropdown.Item as={Link} to="/vaatteet/naiset">Naiset</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="/vaatteet/miehet">Miehet</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/vaatteet/unisex">Unisex</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>

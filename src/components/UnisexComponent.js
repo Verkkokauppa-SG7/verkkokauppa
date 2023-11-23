@@ -8,7 +8,7 @@ const UnisexComponent = () => {
 
   useEffect(() => {
     // Fetch data from the API endpoint
-    fetch('http://localhost:3001/categories?category_type=Unisex')
+    fetch('http://localhost:3001/products?category_type=Unisex')
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.error('Error fetching Unisex data:', error));
@@ -18,20 +18,17 @@ const UnisexComponent = () => {
   const targetCategory = 'Unisex';
 
   // Filter the data to include only items from the target category
-  const filteredData = data.filter((category) => category.categoryType === targetCategory);
+  const filteredData = data.filter((category) => category.category_type === targetCategory);
 
 
   return (
     <div>
       <h2>Unisex vaatteet</h2>
       <ul>
-        {filteredData.map((category) => (
-          <li key={category.categoryName}>
-            {/* Use Link to navigate to the product page */}
-            <Link to={`/tuotteet/${category.categoryName}`}>
-              <h2>{category.categoryName}</h2>
-            </Link>
-            <p>{category.description}</p>
+        {data.map((product) => (
+          <li key={product.productId}>
+            <h2>{product.productName}</h2>
+            <p>Hinta {product.price}</p>
           </li>
         ))}
       </ul>
