@@ -7,9 +7,9 @@ const PresetCategories = () => {
   return (
     <nav>
       <ul>
-        <li><Link to="/tuotteet/miehet">Miehet</Link></li>
-        <li><Link to="/tuotteet/naiset">Naiset</Link></li>
-        <li><Link to="/tuotteet/unisex">Unisex</Link></li>
+        <li><Link to="/tuoteryhmät/miehet">Miehet</Link></li>
+        <li><Link to="/tuoteryhmät/naiset">Naiset</Link></li>
+        <li><Link to="/tuoteryhmät/unisex">Unisex</Link></li>
       </ul>
     </nav>
   );
