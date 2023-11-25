@@ -33,7 +33,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <h5>Tuotteet tuoteryhmässä {category_type}</h5>
+      <h5>Tuotteet {category_type}</h5>
       <ul>
         {products.map((product, index) => (
           <li key={index}>
