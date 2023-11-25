@@ -15,7 +15,7 @@ const Categoriesbyname = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Replace 'your-api-endpoint' with the actual URL of your REST API
+        // Fetching from API the categories by category type
         const response = await fetch(`http://localhost:3001/categories?category_type=${category_type}`);
         const jsonData = await response.json();
         setData(jsonData);
@@ -27,7 +27,7 @@ const Categoriesbyname = () => {
 
     // Call the fetchData function
     fetchData();
-  }, []); // The empty dependency array ensures that this effect runs only once, similar to componentDidMount
+  }, [category_type]); // The empty dependency array ensures that this effect runs only once, similar to componentDidMount
 
   // Render the component with the fetched data
   return (
@@ -49,5 +49,5 @@ const Categoriesbyname = () => {
   );
 };
 
-// Export your component for use in other parts of your application
+// Exporting the categories
 export default Categoriesbyname;
