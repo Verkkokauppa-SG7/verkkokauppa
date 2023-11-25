@@ -5,10 +5,7 @@ import Footer from './components/Footer';
 import './App.css';
 import ProductList from './components/ProductList';
 import PresetCategories from './pages/PresetCategories';
-import MenComponent from './components/MenComponent';
 import Categoriesbyname from './components/Categoriesbyname.js';
-import WomenComponent from './components/WomenComponent';
-import UnisexComponent from './components/UnisexComponent';
 import FrontPage from './pages/FrontPage';
 import ShoppingCart from './components/ShoppingCart.js';
 
