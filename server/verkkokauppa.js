@@ -51,18 +51,18 @@ app.get('/products', async (req, res) => {
 
         if(category_type && category){
             // Fetching products by category_type AND category
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=? AND category=?", [category_type, category]);
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type, product_description description FROM product WHERE category_type=? AND category=?", [category_type, category]);
        
         } else if (category_type) {  
             // Fetching products by category type
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=? AND category=?", [category_type]);
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type,  product_description description FROM product WHERE category_type=? AND category=?", [category_type]);
 
         } else if (query) {  
             // Tarkista, onko tuotteen nimi tai kuvaus sisällytetty hakukyselyyn
-            result = await connection.execute("SELECT id, product_name AS productName, price, image_url AS imageUrl, category, category_type FROM product WHERE product_name LIKE ? OR product_name LIKE ?", [`%${query}%`, `%${query}%`]);
+            result = await connection.execute("SELECT id, product_name AS productName, price, image_url AS imageUrl, category, category_type, product_description description FROM product WHERE product_name LIKE ? OR product_name LIKE ?", [`%${query}%`, `%${query}%`]);
 
         }else{
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product");
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type, product_description description FROM product");
             console.log('else-haara');
         }
         
