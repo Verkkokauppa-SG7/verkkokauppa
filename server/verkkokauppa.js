@@ -50,7 +50,12 @@ app.get('/products', async (req, res) => {
         let result;        
 
         if(category_type && category){
+            // Fetching products by category_type AND category
             result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=? AND category=?", [category_type, category]);
+       
+        } else if (category_type) {  
+            // Fetching products by category type
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=? AND category=?", [category_type]);
 
         } else if (query) {  
             // Tarkista, onko tuotteen nimi tai kuvaus sisällytetty hakukyselyyn
