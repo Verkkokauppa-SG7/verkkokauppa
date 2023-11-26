@@ -32,13 +32,12 @@ const Categoriesbyname = () => {
   // Render the component with the fetched data
   return (
     <div>
-      <h1>Tuoteryhmät {category_type} {} </h1>
+      <h1>Tuoteryhmät {category_type} </h1>
       <ul>
         {data.map((category, index) => (
           <li key={index}>
-            {console.log('Link to:', `/tuotteet/${category.category_type}`)}
-            {/* Use Link to navigate to the product page */}
-            <Link to={`/tuotteet/${category_type}`}>
+            {/* Use Link to navigate to the product page with the selected category */}
+            <Link to={`/tuotteet/${category_type}/${category.categoryName}`}>
               <h2>{category.categoryName}</h2>
             </Link>
             <p>{category.description}</p>

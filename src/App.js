@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FrontPage />} />
             <Route path="/tuoteryhmät" element={<PresetCategories />} />
-            <Route path="/tuotteet/:category_type" element={<ProductList />} />
+            <Route path="/tuotteet/:category_type/:category" element={<ProductList />} />
             <Route path="vaatteet/:category_type" element={<Categoriesbyname />} />
             <Route path='/ostoskori' element={<ShoppingCart />} />
             <Route path="/haku" element={<SearchBar />} />

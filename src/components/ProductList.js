@@ -6,9 +6,10 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import './ProductList.css'
 
 const ProductList = () => {
-  const {category_type, query} = useParams();
+  const {category_type, category, query} = useParams();
 
   console.log('Received category_type:', category_type);
+  console.log('Received category:', category);
   console.log('Received query:', query);
   
   const [products, setProducts] = useState([]);
@@ -16,13 +17,17 @@ const ProductList = () => {
 
 
   useEffect(() => {
-    console.log('Route transitioned to:', category_type);
+    console.log('Route transitioned to:', category_type, category);
     const fetchProducts = async () => {
       try {
  
         let apiUrl;
-        if (category_type) {
-          // Fetch products by category
+
+        if (category_type && category) {
+          // Fetch products by category_type and category
+          apiUrl = `http://localhost:3001/products?category_type=${category_type}&category=${category}`;
+        } else if (category_type) {
+          // Fetch products by category_type
           apiUrl = `http://localhost:3001/products?category_type=${category_type}`;
         } else if (query) {
           // Fetch products by query
@@ -46,7 +51,7 @@ const ProductList = () => {
     };
 
     fetchProducts();
-  }, [category_type, query]);
+  }, [category_type, category, query]);
 
     if (loading) {
     // Latausindikaattori näytetään, kun hakutuloksia haetaan
@@ -65,7 +70,7 @@ const ProductList = () => {
           {query ? (
             <div>Ei tuotteita saatavilla haulle: {query}</div>
           ) : (
-            <div>Ei tuotteita saatavilla valitussa tuoteryhmässä: {category_type}</div>
+            <div>Ei tuotteita saatavilla valitussa tuoteryhmässä: {category}</div>
           )}
         </div>
       );
@@ -73,7 +78,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <h5>Tuotteet {category_type}</h5>
+      <h5>Tuotteet {category_type} - {category}</h5>
       <ul>
         {products.map((product, index) => (
           <li key={index}>

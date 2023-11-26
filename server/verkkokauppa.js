@@ -44,12 +44,13 @@ app.get('/products', async (req, res) => {
         const connection = await mysql.createConnection(conf);
 
         const category_type = req.query.category_type;
+        const category = req.query.category;
         const query = req.query.query;
 
         let result;        
 
-        if(category_type){
-            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=?", [category_type]);
+        if(category_type && category){
+            result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=? AND category=?", [category_type, category]);
 
         } else if (query) {  
             // Tarkista, onko tuotteen nimi tai kuvaus sisällytetty hakukyselyyn
@@ -57,6 +58,7 @@ app.get('/products', async (req, res) => {
 
         }else{
             result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product");
+            console.log('else-haara');
         }
         
         //First index in the result contains the rows in an array
