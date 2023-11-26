@@ -44,11 +44,17 @@ app.get('/products', async (req, res) => {
         const connection = await mysql.createConnection(conf);
 
         const category_type = req.query.category_type;
+        const query = req.query.query;
 
         let result;        
 
         if(category_type){
             result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product WHERE category_type=?", [category_type]);
+
+        } else if (query) {  
+            // Tarkista, onko tuotteen nimi tai kuvaus sisällytetty hakukyselyyn
+            result = await connection.execute("SELECT id, product_name AS productName, price, image_url AS imageUrl, category, category_type FROM product WHERE product_name LIKE ? OR product_name LIKE ?", [`%${query}%`, `%${query}%`]);
+
         }else{
             result = await connection.execute("SELECT id, product_name productName, price, image_url imageUrl, category, category_type FROM product");
         }

@@ -8,6 +8,8 @@ import PresetCategories from './pages/PresetCategories';
 import Categoriesbyname from './components/Categoriesbyname.js';
 import FrontPage from './pages/FrontPage';
 import ShoppingCart from './components/ShoppingCart.js';
+import SearchBar from './components/SearchBar.js';
+
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
             <Route path="/tuotteet/:category_type" element={<ProductList />} />
             <Route path="vaatteet/:category_type" element={<Categoriesbyname />} />
             <Route path='/ostoskori' element={<ShoppingCart />} />
+            <Route path="/haku" element={<SearchBar />} />
+            <Route path="/hakutulokset/:query" element={<ProductList />} />
           </Routes>
       </div>
       <Footer />
