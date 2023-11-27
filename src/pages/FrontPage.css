@@ -8,10 +8,17 @@ h2 {
 
 .content {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     padding: 0;
     background-color: #eae1df;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
 }
 
 .frontText {
@@ -21,6 +28,7 @@ h2 {
 }
 
 button {
+    display: flex;
     background-color: #373f51;
     border: none;
     color: #ffffff;
@@ -36,12 +44,22 @@ button {
 .frontImage {
     width: 40%;
     height: auto;
+    margin: 0px;
+    padding: 0px;
 }
 
 .img1 {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
     width: 100%;
+    height: auto;
+}
+
+.galleryBox {
+    display: flex;
+    vertical-align: top;
+    margin-top: 0px;
+}
+
+img {
+    width: calc(100%/3);
     height: auto;
 }
