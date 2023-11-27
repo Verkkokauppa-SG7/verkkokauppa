@@ -74,6 +74,26 @@ app.get('/products', async (req, res) => {
     }
 });
 
+app.get('/product/:productId', async (req, res) => {
+    try {
+      const connection = await mysql.createConnection(conf);
+      const productId = req.params.productId;
+
+      console.log(req.params.productId)
+  
+      const [rows] = await connection.execute('SELECT * FROM product WHERE id = ?', [productId]);
+  
+      if (rows.length === 0) {
+        res.status(404).json({ error: 'Product not found' });
+      } else {
+        const productDetails = rows[0];
+        res.json(productDetails);
+      }
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  });
+
 
 /**
  * Gets all the categories

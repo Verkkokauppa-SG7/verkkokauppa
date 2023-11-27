@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import './ProductList.css'
+import { Link } from 'react-router-dom';
 
 const ProductList = () => {
   const {category_type, category, query} = useParams();
@@ -82,9 +83,11 @@ const ProductList = () => {
       <ul>
         {products.map((product, index) => (
           <li key={index}>
+            <Link to={`/tuote/${product.id}`}>
             <h2>{product.productName}</h2>
             <p>{product.description}</p>
             <p>hinta {product.price}</p>
+            </Link>
           </li>
         ))}
       </ul>

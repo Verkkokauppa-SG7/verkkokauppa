@@ -9,6 +9,7 @@ import Categoriesbyname from './components/Categoriesbyname.js';
 import FrontPage from './pages/FrontPage';
 import ShoppingCart from './components/ShoppingCart.js';
 import SearchBar from './components/SearchBar.js';
+import ProductDetails from './components/ProductDetails';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path='/ostoskori' element={<ShoppingCart />} />
             <Route path="/haku" element={<SearchBar />} />
             <Route path="/hakutulokset/:query" element={<ProductList />} />
+            <Route path="/tuote/:productId" element={<ProductDetails />} />
           </Routes>
       </div>
       <Footer />
