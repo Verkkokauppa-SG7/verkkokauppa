@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import './ProductList.css'
+import '../styles/ProductList.css'
 import { Link } from 'react-router-dom';
 
 const ProductList = () => {

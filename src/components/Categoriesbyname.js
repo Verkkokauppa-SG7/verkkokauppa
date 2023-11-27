@@ -1,7 +1,7 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Categories.css'; 
+import '../styles/Categories.css'; 
 import { useParams } from 'react-router-dom';
 
 // Fetching and returning categories with link to products in category

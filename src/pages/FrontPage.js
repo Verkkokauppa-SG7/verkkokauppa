@@ -1,5 +1,5 @@
 import React from 'react';
-import './FrontPage.css';
+import '../styles/FrontPage.css';
 import image1 from '../images/etusivu-kuva1.jpg';
 import image2 from '../images/etusivu-kuva2.jpg';
 import image3 from '../images/etusivu-kuva3.jpg';

@@ -1,0 +1,43 @@
+footer {
+    background-color: #ffffff;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.footer-links {
+    margin-left: 40px;
+    text-align: left; 
+}
+  
+.footer-links p {
+    margin-bottom: 5px;
+}
+
+.footer-links a {
+    font-size: 20px;
+    font-weight: 300;
+  }
+  
+.copyright {
+    margin: 0 auto;
+}
+  
+.social-icons {
+    display: flex;
+    font-size: 20px;
+    gap: 15px;
+}
+
+.contact p {
+    margin: 5px 0;
+    text-align: left;
+    margin-right: 40px;
+  }
