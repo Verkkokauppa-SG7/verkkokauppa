@@ -13,7 +13,7 @@ const ProductDetails = () => {
     // Tee tarvittava tietokantahaku tuotteen tietojen noutamiseksi
     const fetchProductDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products/${productId}`);
+        const response = await fetch(`http://localhost:3001/product/${productId}`);
         const productData = await response.json();
         setProduct(productData);
 
@@ -50,8 +50,11 @@ const ProductDetails = () => {
 
   return (
     <div>
-      <h2>{product.productName}</h2>
-      <p>{product.description}</p>
+      <h2>{product.product_name}</h2>
+      <div>
+      <img src={product.image_url} alt="Tuotekuva" />
+      </div>
+      <p>{product.product_description}</p>
       <p>Hinta: {product.price}</p>
       {/* Muut tuotetiedot */}
       <button onClick={handleAddToCart}>Lisää ostoskoriin</button>

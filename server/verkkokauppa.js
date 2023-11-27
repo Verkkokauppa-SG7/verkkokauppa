@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
+app.use(express.static('images'));
 
 
 const PORT = process.env.PORT || 3001;
