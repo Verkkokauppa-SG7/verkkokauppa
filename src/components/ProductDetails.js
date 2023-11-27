@@ -9,6 +9,7 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
     // Tee tarvittava tietokantahaku tuotteen tietojen noutamiseksi
     const fetchProductDetails = async () => {
@@ -43,21 +44,25 @@ const ProductDetails = () => {
     return <div>Tuotesivu ei saatavilla.</div>;
   }
 
+  const imagePath = process.env.PUBLIC_URL + '/images/' + product.image_url;
+
   const handleAddToCart = () => {
   //tuotteen lisääminen ostoskoriin toiminto tähän
     console.log('Lisätty ostoskoriin:', product);
   };
 
   return (
-    <div>
-      <h2>{product.product_name}</h2>
-      <div>
-      <img src={product.image_url} alt="Tuotekuva" />
+    <div className="product-details-container">
+      <div className="product-image-container">
+        <img src={imagePath} alt="Tuotekuva" />
       </div>
-      <p>{product.product_description}</p>
-      <p>Hinta: {product.price}</p>
-      {/* Muut tuotetiedot */}
-      <button onClick={handleAddToCart}>Lisää ostoskoriin</button>
+      <div className="product-info-container">
+        <h2>{product.product_name}</h2>
+        <p>{product.product_description}</p>
+        <p>Hinta: {product.price}</p>
+        {/* Muut tuotetiedot */}
+        <button onClick={handleAddToCart}>Lisää ostoskoriin</button>
+      </div>
     </div>
   );
 };

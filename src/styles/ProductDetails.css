@@ -9,3 +9,28 @@
   .loading-spinner svg {
     margin-right: 10px;
   }
+
+  .product-details-container {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .product-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .product-image-container img {
+    height: 400px;
+    width: 400px;
+  
+  }
+  
+  .product-info-container {
+    flex: 1;
+    padding: 0 20px;
+  }
+  
