@@ -84,9 +84,14 @@ const ProductList = () => {
         {products.map((product, index) => (
           <li key={index}>
             <Link to={`/tuote/${product.id}`}>
+            <div className="kuva">
+            <img src={`/images/${product.imageUrl}`} alt="Tuotekuva" />
+            </div>
+            <div className="info">
             <h2>{product.productName}</h2>
             <p>{product.description}</p>
             <p>hinta {product.price}</p>
+            </div>
             </Link>
           </li>
         ))}

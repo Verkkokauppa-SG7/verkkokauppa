@@ -5,6 +5,10 @@ h5 {
     font-size: xx-large;
 }
 
+p {
+    font-size:medium;
+}
+
 .loading-spinner {
     display: flex;
     align-items: center;
@@ -15,4 +19,10 @@ h5 {
   
   .loading-spinner svg {
     margin-right: 10px;
+  }
+
+  .kuva img {
+    height: 200px;
+    width: auto;
+  
   }
