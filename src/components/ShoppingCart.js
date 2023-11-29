@@ -1,5 +1,9 @@
 import React from "react";
 import '../styles/ShoppingCart.css'
+import { cartSignal } from "./signals";
+import handleAddToCart from "./ProductDetails"
+import ProductDetails from "./ProductDetails";
+import CartContents from "./ProductDetails"
 
 
 const ShoppingCart = () => {

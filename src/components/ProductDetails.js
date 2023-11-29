@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import '../styles/ProductDetails.css'
+import { cartSignal } from './signals';
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -46,9 +47,29 @@ const ProductDetails = () => {
 
   const imagePath = process.env.PUBLIC_URL + '/images/' + product.image_url;
 
-  const handleAddToCart = () => {
+  function CartContents(){
+
+    const cartProducts = cartSignal.value
+
+    return(
+        <div>
+            <h2>Ostoskori</h2>
+            <ul>
+                {cartProducts.map(p => <li key={p.id}>{p.pname} x {p.count}</li>)}
+            </ul>
+        </div>
+    )
+}
+
+  const handleAddToCart = (p) => {
   //tuotteen lisääminen ostoskoriin toiminto tähän
-    console.log('Lisätty ostoskoriin:', product);
+  const prod = cartSignal.value.find(prod => prod.id === p.id)
+  if(prod){
+      prod.count++;
+      cartSignal.value = [...cartSignal.value]
+  }else{
+      cartSignal.value = [...cartSignal.value, {...p, count: 1}]
+  }
   };
 
   return (
