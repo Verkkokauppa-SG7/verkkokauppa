@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import '../styles/Navbar.css'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
-import SearchBar from './SearchBar.js';
 
 
 export default function Menu() {
@@ -10,7 +9,6 @@ export default function Menu() {
         <Navbar collapseOnSelect expand="lg" className="bg-white">
             <Container>
                 <Navbar.Brand>
-                    <SearchBar />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">

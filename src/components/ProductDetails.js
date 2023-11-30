@@ -47,30 +47,22 @@ const ProductDetails = () => {
 
   const imagePath = process.env.PUBLIC_URL + '/images/' + product.image_url;
 
-  function CartContents(){
-
-    const cartProducts = cartSignal.value
-
-    return(
-        <div>
-            <h2>Ostoskori</h2>
-            <ul>
-                {cartProducts.map(p => <li key={p.id}>{p.pname} x {p.count}</li>)}
-            </ul>
-        </div>
-    )
-}
-
-  const handleAddToCart = (p) => {
+  function handleAddToCart(p) {
   //tuotteen lisääminen ostoskoriin toiminto tähän
-  const prod = cartSignal.value.find(prod => prod.id === p.id)
-  if(prod){
-      prod.count++;
+  if (cartSignal.value) {
+    const prod = cartSignal.value.find((prod) => prod.id === p.id)
+
+    if (prod) {
+      prod.count++
       cartSignal.value = [...cartSignal.value]
-  }else{
-      cartSignal.value = [...cartSignal.value, {...p, count: 1}]
+    } else {
+      cartSignal.value = [...cartSignal.value, { ...p, count: 1 }]
+    }
+  } else {
+    // Jos cartSignal.value on undefined, aseta se tyhjäksi taulukoksi ja lisää tuote
+    cartSignal.value = [{ ...p, count: 1 }]
   }
-  };
+}
 
   return (
     <div className="product-details-container">
@@ -82,7 +74,7 @@ const ProductDetails = () => {
         <p>{product.product_description}</p>
         <p>Hinta: {product.price}</p>
         {/* Muut tuotetiedot */}
-        <button onClick={handleAddToCart}>Lisää ostoskoriin</button>
+        <button onClick={() => handleAddToCart(product)}>Lisää ostoskoriin</button>
       </div>
     </div>
   );
