@@ -45,6 +45,14 @@ CREATE TABLE order_line(
     FOREIGN KEY (product_id) REFERENCES product(id)
 );
 
+CREATE TABLE adminuser(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    username VARCHAR(255) UNIQUE,
+    pw VARCHAR(255)
+);
+
 
 INSERT INTO product_category VALUES ('Computers', 'Laptop and desktop computers'),
 ('Sports', 'Sport equipment'),('Bikes', 'City and MTB bikes'),('Music', 'Guitars, drums and other instruments'), ('Phones', 'Mobile devices for all uses');

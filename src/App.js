@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom'; 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -12,6 +12,7 @@ import SearchBar from './components/SearchBar.js';
 import ProductDetails from './components/ProductDetails';
 import Admin from './pages/Admin.js';
 import CategoryForm from './components/CategoryForm.js';
+import AdminLogin from './components/AdminLogin.js'
 
 
 function App() {
@@ -30,8 +31,9 @@ function App() {
             <Route path="/haku" element={<SearchBar />} />
             <Route path="/hakutulokset/:query" element={<ProductList />} />
             <Route path="/tuote/:productId" element={<ProductDetails />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/admin/tuoteryhmat" element={<CategoryForm />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route path="/yllapito" element={<Admin />} />
+            <Route path="/yllapito/tuoteryhmat" element={<CategoryForm />} />
 
           </Routes>
       </div>

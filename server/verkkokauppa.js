@@ -347,3 +347,30 @@ async function getOrders(username){
         res.status(500).json({ error: err.message });
     }
 }
+
+app.post('/adminlogin', upload.none(), async (req, res) => {
+    const uname = req.body.username;
+    const pw = req.body.pw;
+
+
+    try {
+        const connection = await mysql.createConnection(conf);
+
+        const [rows] = await connection.execute('SELECT pw FROM adminuser WHERE username=?', [uname]);
+
+        if(rows.length > 0){
+            const isAuth = await bcrypt.compare(pw, rows[0].pw);
+            if(isAuth){
+                const token = jwt.sign({username: uname}, 'mysecretkey');
+                res.status(200).json({jwtToken: token});
+            }else{
+                res.status(401).end('Tarkista käyttäjätunnus ja salasana');
+            }
+        }else{
+            res.status(404).send('Tarkista käyttäjätunnus ja salasana');
+        }
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});

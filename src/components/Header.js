@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faUserCircle, faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import '../styles/Header.css';
 import SearchBar from './SearchBar.js';
@@ -17,6 +17,7 @@ const Header = () => {
         <div className="icons">
           <SearchBar />
           <Link to="/ostoskori" className="link-icon"><FontAwesomeIcon icon={faCartShopping} /></Link>
+          <Link to="/admin" className="link-icon"><FontAwesomeIcon icon={faLock} /></Link>
         </div>
       </div>
     </header>

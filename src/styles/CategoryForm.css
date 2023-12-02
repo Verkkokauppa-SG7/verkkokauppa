@@ -18,7 +18,6 @@ label {
 input {
     padding: 2px;
     display: inline-block;
-    float: left;
   }
 
 button {
@@ -34,4 +33,6 @@ button {
     color: green;
   }
 
+
+  
 
