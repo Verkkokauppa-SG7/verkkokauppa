@@ -10,6 +10,8 @@ import FrontPage from './pages/FrontPage';
 import ShoppingCart from './components/ShoppingCart.js';
 import SearchBar from './components/SearchBar.js';
 import ProductDetails from './components/ProductDetails';
+import Admin from './pages/Admin.js';
+import CategoryForm from './components/CategoryForm.js';
 
 
 function App() {
@@ -28,6 +30,9 @@ function App() {
             <Route path="/haku" element={<SearchBar />} />
             <Route path="/hakutulokset/:query" element={<ProductList />} />
             <Route path="/tuote/:productId" element={<ProductDetails />} />
+            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin/tuoteryhmat" element={<CategoryForm />} />
+
           </Routes>
       </div>
       <Footer />

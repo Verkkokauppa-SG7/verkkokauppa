@@ -1,0 +1,30 @@
+/* CategoryForm css */
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+form {
+    display: inline-block;
+    flex-direction: column;
+}
+
+label {
+    font-size: x-large;
+    margin-left: 20px;
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: left;
+}
+
+input {
+    padding: 2px;
+    display: inline-block;
+    float: left;
+  }
+
+button {
+    margin-top: 10px;
+    margin-left: 20px;
+
+}
+
+

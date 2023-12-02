@@ -12,6 +12,7 @@ export default function Footer() {
           <p><Link to="/tilaus">Tilaus</Link></p>
           <p><Link to="/toimitus">Toimitus</Link></p>
           <p><Link to="/tietosuoja">Tietosuoja</Link></p>
+          <p><Link to="/admin">Admin</Link></p>
         </div>
       </div>
       <p className="copyright">Copyright &copy; TIK23KM Ryhmä 7</p>
