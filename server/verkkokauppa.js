@@ -160,9 +160,21 @@ app.post('/categories', async (req, res) => {
         const categories = req.body;
         
         for (const category of categories) {
-            await connection.execute("INSERT INTO product_category (category_name, category_type, category_description) VALUES (?,?,?)", [category.category_name, category.category_type, category.category_description]);
+            // Check if the category already exists
+            const [existingCategory] = await connection.execute('SELECT * FROM product_category WHERE category_name = ? AND category_type = ?',[category.category_name, category.category_type]
+        );
 
+        if (existingCategory.length > 0) {
+            // Category with the same name and type already exists, handle accordingly
+            // Return error
+            connection.rollback();
+            return res.status(400).json({ error: 'Tuoteryhmä, jolla on sama tuoteryhmän nimi ja tyyppi on jo olemassa. Tuoteryhmää ei lisätty.' });
         }
+
+        // Insert the new category if it doesn't already exist
+        await connection.execute('INSERT INTO product_category (category_name, category_type, category_description) VALUES (?,?,?)',[category.category_name, category.category_type, category.category_description]
+        );
+    }
     
         connection.commit();
         res.status(200).send("Categories added!");

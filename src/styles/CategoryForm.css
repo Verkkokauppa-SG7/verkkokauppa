@@ -24,7 +24,14 @@ input {
 button {
     margin-top: 10px;
     margin-left: 20px;
-
 }
+
+.error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
 
 
