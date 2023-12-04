@@ -1,6 +1,7 @@
 // Admin.js
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import '../styles/FeedbackList.css'
 
 
 const Admin = ({isAdmin}) => { 
@@ -18,6 +19,7 @@ const Admin = ({isAdmin}) => {
         </div>
       </ul>
     </nav>
+    <div className="empty-space"></div>
     </div>
   );
 };

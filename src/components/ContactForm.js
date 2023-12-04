@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/FeedbackList.css'
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -82,6 +83,7 @@ const handleReturnHome = () => {
         </div>
       </form>
     )}
+    <div className="empty-space"></div>
   </div>
 );
 };

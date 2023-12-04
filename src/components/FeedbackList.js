@@ -36,7 +36,9 @@ const FeedbackList = () => {
           </li>
         ))}
       </ul>
+      <div className="empty-space"></div>
     </div>
+
   );
 };
 

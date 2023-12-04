@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
+import '../styles/FeedbackList.css'
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -62,7 +63,9 @@ const AdminLogin = () => {
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <div className="empty-space"></div>
     </div>
+    
   );
 }
 
