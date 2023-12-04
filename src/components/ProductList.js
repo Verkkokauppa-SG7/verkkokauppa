@@ -83,6 +83,7 @@ const ProductList = () => {
       <ul>
         {products.map((product, index) => (
           <li key={index}>
+            <div className="laatikko">
             <Link to={`/tuote/${product.id}`}>
             <div className="kuva">
             <img src={`/images/${product.imageUrl}`} alt="Tuotekuva" />
@@ -93,6 +94,7 @@ const ProductList = () => {
             <p>hinta {product.price}</p>
             </div>
             </Link>
+            </div>
           </li>
         ))}
       </ul>

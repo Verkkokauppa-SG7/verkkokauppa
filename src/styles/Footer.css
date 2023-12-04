@@ -36,8 +36,14 @@ footer {
     gap: 15px;
 }
 
-.contact p {
+.contact {
     margin: 5px 0;
-    text-align: left;
+    text-align: center;
     margin-right: 40px;
   }
+
+  .contact button {
+    font-size: 20px; /* Koko */
+    padding: 12px 12px; /* Sisennys */
+    margin-left: -3px;
+}

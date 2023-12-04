@@ -11,6 +11,8 @@ const Categoriesbyname = () => {
   console.log('Received category_type:', category_type);
   const [data, setData] = useState([]);
 
+  console.log(data);
+
   // Fetching categories
   useEffect(() => {
     const fetchData = async () => {

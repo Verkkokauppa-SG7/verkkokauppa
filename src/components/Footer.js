@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTiktok, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import '../styles/Footer.css';
+import ContactButton from './ContactButton';
 
 export default function Footer() {
   return (
@@ -23,8 +24,7 @@ export default function Footer() {
           <FontAwesomeIcon icon={faTiktok} className="icon" />
         </div>
         <div className="contact">
-          <p>Ota yhteyttä:</p>
-          <p>info@stiilinsoppi.fi</p>
+          <ContactButton />
         </div>
       </div>
     </footer>

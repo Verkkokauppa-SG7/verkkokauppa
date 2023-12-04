@@ -53,6 +53,13 @@ CREATE TABLE adminuser(
     pw VARCHAR(255)
 );
 
+CREATE TABLE contact_form (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL
+);
+
 
 INSERT INTO product_category VALUES ('Computers', 'Laptop and desktop computers'),
 ('Sports', 'Sport equipment'),('Bikes', 'City and MTB bikes'),('Music', 'Guitars, drums and other instruments'), ('Phones', 'Mobile devices for all uses');

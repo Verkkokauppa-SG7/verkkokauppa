@@ -9,15 +9,19 @@ const cors = require('cors');
 
 const multer = require('multer');
 const upload = multer({ dest: "uploads/" });
+const bodyParser = require('body-parser');
 
 var express = require('express');
 const e = require('cors');
 var app = express();
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.static('images'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 const PORT = process.env.PORT || 3001;
@@ -74,6 +78,8 @@ app.get('/products', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
+//Yksittäisen tuoteen tietojen haku tuotesivulle
 
 app.get('/product/:productId', async (req, res) => {
     try {
@@ -145,7 +151,7 @@ app.get('/customer', async(req,res) => {
         console.log(err.message);
         res.status(403).send('Access forbidden.');
     }
-});
+  });
 
 /**
  * Adds new product categories
@@ -174,7 +180,7 @@ app.post('/categories', async (req, res) => {
         // Insert the new category if it doesn't already exist
         await connection.execute('INSERT INTO product_category (category_name, category_type, category_description) VALUES (?,?,?)',[category.category_name, category.category_type, category.category_description]
         );
-    }
+        }
     
         connection.commit();
         res.status(200).send("Categories added!");
@@ -372,5 +378,52 @@ app.post('/adminlogin', upload.none(), async (req, res) => {
 
     } catch (err) {
         res.status(500).json({ error: err.message });
+    }
+});
+
+
+//Palaute lomakkeen tietojen tallennus tietokantaan//
+
+app.post('/contact', async (req, res) => {
+    try {
+      const formData = req.body;
+  
+      // Tietokantayhteys
+      const connection = await mysql.createConnection(conf);
+  
+      // Tietokantaan tallentaminen ja SQL komennot.
+      const [result] = await connection.execute(
+        'INSERT INTO contact_form (name, email, message) VALUES (?, ?, ?)',
+        [formData.name, formData.email, formData.message]
+      );
+  
+      // Sulje tietokantayhteys
+      connection.end();
+  
+      console.log('Kiitos palautteestasi! Otamme tarvittaessa yhteyttä sähköpostitse. -Stiilin Soppi:', formData);
+      res.sendStatus(200);
+      //Virheenkäsittely
+    } catch (error) {
+      console.error('Virhe lomakkeen tietojen tallennuksessa:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+});
+
+//Palautteiden haku tietokannasta//
+
+app.get('/feedback', async (req, res) => {
+    try {
+        const connection = await mysql.createConnection(conf);
+
+        // Hae kaikki asiakaspalautteet tietokannasta
+        const [feedbackRows] = await connection.execute('SELECT * FROM contact_form');
+
+        // Palauta asiakaspalautteet JSON-muodossa
+        res.status(200).json(feedbackRows);
+
+    } catch (error) {
+        console.error('Virhe asiakaspalautteiden hakemisessa:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });

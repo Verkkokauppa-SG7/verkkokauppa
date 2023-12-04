@@ -13,6 +13,8 @@ import ProductDetails from './components/ProductDetails';
 import Admin from './pages/Admin.js';
 import CategoryForm from './components/CategoryForm.js';
 import AdminLogin from './components/AdminLogin.js'
+import ContactForm from './components/ContactForm.js';
+import FeedbackList from './components/FeedbackList.js';
 
 
 function App() {
@@ -34,7 +36,8 @@ function App() {
             <Route path="/admin" element={<AdminLogin />} />
             <Route path="/yllapito" element={<Admin />} />
             <Route path="/yllapito/tuoteryhmat" element={<CategoryForm />} />
-
+            <Route path="/ota-yhteytta" element={<ContactForm />} />
+            <Route path="/yllapito/palautteet" element={<FeedbackList />} />
           </Routes>
       </div>
       <Footer />
