@@ -43,6 +43,11 @@ const Categories = ({categoryType}) => {
           </li>
         ))}
       </ul>
+      <div className="empty-space"></div>
+      <div className="empty-space"></div>
+      <div className="empty-space"></div>
+      <div className="empty-space"></div>
+      <div className="empty-space"></div>
     </div>
   );
 };

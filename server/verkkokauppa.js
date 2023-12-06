@@ -40,6 +40,7 @@ const conf = {
 }
 
 
+
 /**
  * Gets the products
  * Optional category query parameter for filtering only products from that category
@@ -427,3 +428,34 @@ app.get('/feedback', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+
+app.delete('/feedback/:id', async (req, res) => {
+    try {
+      // Luodaan tietokantayhteys
+      const connection = await mysql.createConnection(conf);
+      
+      const id = parseInt(req.params.id);
+  
+      // SQL-kysely asiakaspalautteen poistamiseksi tietokannasta
+      const sql = 'DELETE FROM contact_form WHERE id = ?';
+  
+      // Suoritetaan SQL-kysely
+      const [results] = await connection.execute(sql, [id]);
+  
+      // Tarkistetaan, kuinka monta riviä poistettiin
+      console.log('Poistettuja rivejä:', results.affectedRows);
+      if (results.affectedRows === 0) {
+        res.status(404).json({ error: 'Asiakaspalautetta ei löytynyt' });
+      } else {
+        res.status(204).send(); // Onnistunut, ei sisältöä
+      }
+  
+      // Suljetaan tietokantayhteys
+      connection.end();
+    } catch (error) {
+      console.error('Virhe asiakaspalautteen poistamisessa:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  

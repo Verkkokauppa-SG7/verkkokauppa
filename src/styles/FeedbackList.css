@@ -8,3 +8,19 @@ body {
 .empty-space {
     height: 200px;
 }
+
+.poistanappi{
+    width: 100px;
+    height: 50px;
+    font-size: 14px;
+}
+
+.feedback {
+    display: grid;
+    grid-template-columns: 1fr; /* Yksi sarake */
+}
+
+ul {
+    display: grid;
+    gap: 3px; /* Välistys palautteiden välillä */
+  }

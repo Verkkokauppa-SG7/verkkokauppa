@@ -46,6 +46,8 @@ const Categoriesbyname = () => {
           </li>
         ))}
       </ul>
+      <div className="empty-space"></div>
+
     </div>
   );
 };

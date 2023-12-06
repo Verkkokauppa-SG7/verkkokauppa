@@ -34,3 +34,13 @@
     padding: 0 20px;
   }
   
+  .body {
+
+    min-height: 100vh;
+
+    overflow-y: scroll; /* Lisää pystysuuntainen vieritys, jos sivu ei mahdu näytölle */
+  }
+
+.empty-space {
+    height: 2000px;
+}

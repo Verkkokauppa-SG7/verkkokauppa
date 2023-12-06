@@ -98,6 +98,7 @@ const ProductList = () => {
           </li>
         ))}
       </ul>
+      <div className="empty-space"></div>
     </div>
   );
 };
