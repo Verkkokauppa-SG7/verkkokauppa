@@ -51,7 +51,7 @@ const FeedbackList = () => {
   return (
     <div>
       <h2>Asiakaspalaute</h2>
-      <ul>
+      <ul className="ulli">
         {feedback.map(item => (
           <li key={item.id}>
             <div className="feedback">

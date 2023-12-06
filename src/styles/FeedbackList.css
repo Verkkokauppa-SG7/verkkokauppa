@@ -20,7 +20,7 @@ body {
     grid-template-columns: 1fr; /* Yksi sarake */
 }
 
-ul {
+.ulli {
     display: grid;
     gap: 3px; /* Välistys palautteiden välillä */
   }
