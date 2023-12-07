@@ -1,0 +1,19 @@
+.btn {
+    background-color: #373f51;
+    color: #fff;
+    margin: 0 auto;
+}
+
+.btn-default:hover {
+    background-color: #373f51;
+    color: #fff;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 15px;
+    margin: 0 auto;
+}

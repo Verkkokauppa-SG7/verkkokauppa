@@ -15,6 +15,8 @@ import CategoryForm from './components/CategoryForm.js';
 import AdminLogin from './components/AdminLogin.js'
 import ContactForm from './components/ContactForm.js';
 import FeedbackList from './components/FeedbackList.js';
+import Login from './components/Login.js';
+import Signup from './components/Signup.js';
 
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
             <Route path="/yllapito/tuoteryhmat" element={<CategoryForm />} />
             <Route path="/ota-yhteytta" element={<ContactForm />} />
             <Route path="/yllapito/palautteet" element={<FeedbackList />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
       </div>
       <Footer />
