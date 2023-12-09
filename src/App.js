@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
-import { Route, Routes } from 'react-router-dom'; 
+import { Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react'; 
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './App.css';
@@ -12,7 +13,7 @@ import SearchBar from './components/SearchBar.js';
 import ProductDetails from './components/ProductDetails';
 import Admin from './pages/Admin.js';
 import CategoryForm from './components/CategoryForm.js';
-import AdminLogin from './components/AdminLogin.js'
+import AdminLogin from './components/AdminLogin.js';
 import ContactForm from './components/ContactForm.js';
 import FeedbackList from './components/FeedbackList.js';
 import Login from './components/Login.js';
@@ -20,13 +21,19 @@ import Signup from './components/Signup.js';
 
 
 function App() {
+  const [isAdmin, setIsAdmin] = useState();
 
   return (
     <>
       <Header />
-      <Navbar />
+      {/* Pass isAdmin to Navbar */}
+      <Navbar isAdmin={isAdmin} />
       <div className='container'>
           <Routes>
+            {/* Pass setIsAdmin to AdminLogin */}
+            <Route path="/admin" element={<AdminLogin setIsAdmin={isAdmin} />} />
+            {/* Pass isAdmin to Admin */}
+            <Route path="/yllapito" element={<Admin isAdmin={isAdmin} />} />
             <Route path="/" element={<FrontPage />} />
             <Route path="/tuoteryhmät" element={<PresetCategories />} />
             <Route path="/tuotteet/:category_type/:category" element={<ProductList />} />

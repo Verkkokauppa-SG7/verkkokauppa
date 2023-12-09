@@ -1,14 +1,13 @@
 // Admin.js
 import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import '../styles/FeedbackList.css'
 
+const Admin = () => { 
 
-const Admin = ({isAdmin}) => { 
-  console.log({isAdmin});
+  const isAdmin=true;
+
   return (
     <div>
-    {isAdmin && <Navbar />}
     <nav>
       <ul>
         <div>

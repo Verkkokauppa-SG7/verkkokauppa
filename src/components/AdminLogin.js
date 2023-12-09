@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
-import '../styles/FeedbackList.css'
+import '../styles/Adminlogin.css'
 
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
@@ -11,10 +11,6 @@ const AdminLogin = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false); // Set to true if the login is successful
-
-  useEffect(() => {
-    console.log({ isAdmin });
-  }, [isAdmin]); // This useEffect will run whenever isAdmin changes
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
@@ -29,40 +25,45 @@ const AdminLogin = () => {
       
       const { jwtToken } = response.data;
 
-      // Set the isAdmin true with successful login
+      
+      // Set the isAdmin state
       setIsAdmin(true);
+      console.log(isAdmin);
 
-      // Redirect to another component after successful login
+      console.log('handleLogin over');
+
+      // Redirect to Admin-page after successful login
       navigate('/yllapito');
      
-      console.log({isAdmin});
 
     } catch (error) {
       if (error.response) {
         setErrorMessage(error.response.data);
       } else {
-        setErrorMessage('An error occurred while logging in. Please try again.');
+        setErrorMessage('Virhe sisäänkirjautumisessa. Yritä uudelleen.');
       }
     }
   };
 
   console.log('Component rendering with isAdmin:', isAdmin);
   return (
-    <div>
-      <form onSubmit={handleLogin}>
+    <div className="d-flex justify-content-center align-items-center">
+      <div className='bg-white p-3 rounded w-25'>
+      <form className="adminloginform" onSubmit={handleLogin}>
         <label>
-          Username:
+          Käyttäjätunnus:
           <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
         </label>
-        <br />
         <label>
-          Password:
+          Salasana:
+        <br></br>
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </label>
-        <br />
-        <button type="submit">Login</button>
+        <button className='adminlogin' type="submit">Kirjaudu</button>
       </form>
+      
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      </div>
       <div className="empty-space"></div>
     </div>
     

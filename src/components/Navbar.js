@@ -4,7 +4,7 @@ import '../styles/Navbar.css'
 import { Navbar, Container, Nav, /*NavDropdown*/ } from 'react-bootstrap';
 
 
-export default function Menu() {
+export default function Menu({ isAdmin }) {
     return (
         <Navbar collapseOnSelect expand="lg" className="bg-white">
             <Container>
@@ -18,6 +18,8 @@ export default function Menu() {
                         <Nav.Link as={Link} to="/vaatteet/naiset">Naiset</Nav.Link>
                         <Nav.Link as={Link} to="/vaatteet/unisex">Unisex</Nav.Link>
                         <Nav.Link as={Link} to="/meista">Meistä</Nav.Link>
+                        {/* Conditionally render the "Admin" link based on isAdmin */}
+                        {isAdmin && <Nav.Link as={Link} to="/yllapito">Admin</Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
