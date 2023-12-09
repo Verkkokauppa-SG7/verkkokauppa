@@ -4,7 +4,7 @@
     align-items: center;
   }
 
-.adminlogin{
+.adminlogin {
     background-color: #373f51;
     color: #fff;
     border: none; 
@@ -24,7 +24,7 @@ label {
     margin-bottom: 15px;
 }
 
-input, select {
+input, select, a {
     padding: 8px; 
     box-sizing: border-box;
     margin-top: 10px;
@@ -37,3 +37,9 @@ select {
 .alert {
     margin-top: 10px;
   }
+
+a {
+    color: #fff;
+    font-size: 16px;
+
+}

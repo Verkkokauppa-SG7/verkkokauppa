@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Adminlogin.css';
 
@@ -93,7 +94,12 @@ const CategoryForm = () => {
           </label>
           <button className="adminlogin" type="submit">LISÄÄ</button>
           <button className="adminlogin" type="button" onClick={handleReset}>TYHJENNÄ</button>
+          {/* Use a Link component within a button for navigation */}
+          <button className="adminlogin" type="button">
+          <Link to="/yllapito">YLLÄPIDON ETUSIVULLE</Link>
+          </button>
         </form>
+
       </div>
       {errorMessage && (
         <div className="alert alert-danger mt-3" role="alert">
@@ -105,6 +111,8 @@ const CategoryForm = () => {
           {successMessage}
         </div>
       )}
+      {/* Add a Link component for navigation */}
+      
     </div>
   );
 };
