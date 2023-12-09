@@ -9,6 +9,7 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [addedToCart, setAddedToCart] = useState(false);
 
 
   useEffect(() => {
@@ -48,21 +49,29 @@ const ProductDetails = () => {
   const imagePath = process.env.PUBLIC_URL + '/images/' + product.image_url;
 
   function handleAddToCart(p) {
-  //tuotteen lisääminen ostoskoriin toiminto tähän
-  if (cartSignal.value) {
-    const prod = cartSignal.value.find((prod) => prod.id === p.id)
+    //tuotteen lisääminen ostoskoriin toiminto tähän
+    if (cartSignal.value) {
+      const prod = cartSignal.value.find((prod) => prod.id === p.id)
 
-    if (prod) {
-      prod.count++
-      cartSignal.value = [...cartSignal.value]
+      if (prod) {
+        prod.count++
+        cartSignal.value = [...cartSignal.value]
+      } else {
+        cartSignal.value = [...cartSignal.value, { ...p, count: 1 }]
+      }
     } else {
-      cartSignal.value = [...cartSignal.value, { ...p, count: 1 }]
+      // Jos cartSignal.value on undefined, aseta se tyhjäksi taulukoksi ja lisää tuote
+      cartSignal.value = [{ ...p, count: 1 }]
     }
-  } else {
-    // Jos cartSignal.value on undefined, aseta se tyhjäksi taulukoksi ja lisää tuote
-    cartSignal.value = [{ ...p, count: 1 }]
+
+    // Aseta tila, että tuote on lisätty ostoskoriin
+    setAddedToCart(true);
+
+    // Nollaa tila ilmoituksen piilottamiseksi 4 sekunnin kuluttua
+    setTimeout(() => {
+      setAddedToCart(false);
+    }, 4000);
   }
-}
 
   return (
     <div className="product-details-container">
@@ -75,6 +84,11 @@ const ProductDetails = () => {
         <p>Hinta: {product.price}</p>
         {/* Muut tuotetiedot */}
         <button onClick={() => handleAddToCart(product)}>Lisää ostoskoriin</button>
+        {addedToCart && (
+          <div className="alert alert-success mt-2" role="alert">
+            Tuote lisätty ostoskoriin!
+          </div>
+        )}
       </div>
     </div>
   );
