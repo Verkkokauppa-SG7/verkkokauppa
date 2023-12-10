@@ -19,6 +19,7 @@ import FeedbackList from './components/FeedbackList.js';
 import Login from './components/Login.js';
 import Signup from './components/Signup.js';
 import OrderForm from './components/OrderForm.js';
+import CustomerInfo from './pages/CustomerInfo.js';
 
 
 function App() {
@@ -50,7 +51,8 @@ function App() {
             <Route path="/yllapito/palautteet" element={<FeedbackList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/tilaa" element={<OrderForm />} />
+            <Route path="/tilaaminen" element={<OrderForm />} />
+            <Route path="/asiakastiedot" element={<CustomerInfo />} />
           </Routes>
       </div>
       <Footer />

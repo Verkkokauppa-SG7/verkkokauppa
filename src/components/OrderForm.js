@@ -1,7 +1,5 @@
 import React from "react";
 import ShoppingCart from './ShoppingCart';
-import Login from './Login';
-import Signup from './Signup';
 
 const OrderForm = () => {
     return (

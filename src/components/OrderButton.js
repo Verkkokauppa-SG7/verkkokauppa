@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const OrderButton = () => {
     return (
-        <Link to="/tilaa">
+        <Link to="/tilaaminen">
             <button>Tilaa tuotteet</button>
         </Link>
     )

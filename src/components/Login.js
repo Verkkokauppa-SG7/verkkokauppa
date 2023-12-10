@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { signal } from '@preact/signals-react';
 import '../styles/Login.css';
+import { jwtToken } from './TokenSignal';
 
-const token = signal('');
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -29,9 +28,9 @@ function Login() {
 
             if (response.status === 200) {
                 console.log('Kirjautuminen onnistui')
-                const resp = response.data;
-                token.value = resp.data.jwtToken;
                 navigate('/')
+                //const resp = response.data;
+                jwtToken.value = response.data.jwtToken;
             } else {
                 console.log('Kirjautuminen epäonnistui')
             }
@@ -43,6 +42,7 @@ function Login() {
 
     return (
         <div className="d-flex justify-content-center align-items-center">
+            {jwtToken.value.length !== 0 ? navigate('/asiakastiedot') :
             <div className='bg-white p-3 rounded w-25'>
                 <h2>Kirjaudu sisään</h2>
                 <form action="" onSubmit={handleSubmit}>
@@ -63,7 +63,7 @@ function Login() {
                     </div>
                     <Link to="/signup" className='btn btn-default border w-100'>Luo käyttäjätunnus</Link>
                 </form>
-            </div>
+            </div>}
         </div>
     );
 }
