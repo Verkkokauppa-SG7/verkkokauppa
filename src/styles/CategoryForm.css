@@ -1,0 +1,55 @@
+/* CategoryForm css */
+@import url('https://fonts.googleapis.com/css?family=Arimo');
+
+form {
+    display: inline-block;
+    flex-direction: column;
+}
+
+label {
+    font-size: x-large;
+    margin-left: 20px;
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: left;
+}
+
+input, select {
+    padding: 2px;
+    display: inline-block;
+    width: 100%;
+  }
+
+button {
+    margin-top: 10px;
+    /**margin-left: 20px;*/
+    margin-right: 10px;
+}
+
+.error-message {
+    color: red;
+  }
+  
+  .success-message {
+    color: green;
+  }
+
+  .body {
+
+    min-height: 100vh;
+
+    overflow-y: scroll; /* Lisää pystysuuntainen vieritys, jos sivu ei mahdu näytölle */
+  }
+
+.empty-space {
+    height: 200px;
+}
+
+.adminlogin .linkki {
+  color: white;
+  font-weight: normal;
+}  
+
+
+
