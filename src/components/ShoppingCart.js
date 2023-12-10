@@ -2,6 +2,7 @@ import React from "react";
 import '../styles/ShoppingCart.css'
 import { cartSignal } from "./signals";
 import { Card } from "react-bootstrap";
+import OrderButton from "./OrderButton";
 
 const ShoppingCart = () => {
 
@@ -9,6 +10,7 @@ const ShoppingCart = () => {
     <div>
       <h1>Ostoskori</h1>
       <CartContents />
+      <OrderButton />
     </div>
   )
 }
