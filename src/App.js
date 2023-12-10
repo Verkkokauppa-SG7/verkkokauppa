@@ -18,6 +18,7 @@ import ContactForm from './components/ContactForm.js';
 import FeedbackList from './components/FeedbackList.js';
 import Login from './components/Login.js';
 import Signup from './components/Signup.js';
+import OrderForm from './components/OrderForm.js';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
             <Route path="/yllapito/palautteet" element={<FeedbackList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/tilaa" element={<OrderForm />} />
           </Routes>
       </div>
       <Footer />

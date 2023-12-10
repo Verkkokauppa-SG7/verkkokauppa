@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { signal } from '@preact/signals-react';
 import '../styles/Login.css';
+
+const token = signal('');
 
 function Login() {
     const [formData, setFormData] = useState({
@@ -26,6 +29,8 @@ function Login() {
 
             if (response.status === 200) {
                 console.log('Kirjautuminen onnistui')
+                const resp = response.data;
+                token.value = resp.data.jwtToken;
                 navigate('/')
             } else {
                 console.log('Kirjautuminen epäonnistui')

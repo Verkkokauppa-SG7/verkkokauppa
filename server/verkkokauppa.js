@@ -144,7 +144,7 @@ app.get('/customer', async(req,res) => {
 
     //Verify the token. Verified token contains username
     try{
-        const username = jwt.verify(token, 'mysecretkey').username;
+        const username = jwt.verify(token, process.env.JWT_KEY).username;
         const connection = await mysql.createConnection(conf);
         const [rows] = await connection.execute('SELECT first_name fname, last_name lname, username FROM customer WHERE username=?',[username]);
         res.status(200).json(rows[0]);
@@ -294,7 +294,7 @@ app.post('/login', upload.none(), async (req, res) => {
         if(rows.length > 0){
             const isAuth = await bcrypt.compare(pw, rows[0].pw);
             if(isAuth){
-                const token = jwt.sign({username: uname}, 'mysecretkey');
+                const token = jwt.sign({username: uname}, process.env.JWT_KEY);
                 res.status(200).json({jwtToken: token});
             }else{
                 res.status(401).end('User not authorized');
@@ -319,7 +319,7 @@ app.get('/orders', async (req,res) => {
 
     //Verify the token. Verified token contains username
     try{
-        const username = jwt.verify(token, 'mysecretkey').username;
+        const username = jwt.verify(token, process.env.JWT_KEY).username;
         const orders = await getOrders(username);
         res.status(200).json(orders);
     }catch(err){
