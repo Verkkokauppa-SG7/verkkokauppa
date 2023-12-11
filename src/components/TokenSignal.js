@@ -8,5 +8,9 @@ function getToken(){
 }
 
 effect ( () => {
-    sessionStorage.setItem('token', jwtToken.value);
+    if(jwtToken.value.length === 0){
+        sessionStorage.removeItem('token');
+    }else{
+        sessionStorage.setItem('token', jwtToken.value);
+    }
 });
