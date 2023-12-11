@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { cartSignal } from "./signals";
 import { customerData } from "./CustomerSignal";
 
@@ -21,13 +22,8 @@ const OrderForm = () => {
     };
 
     try {
-        const response = await fetch('http://localhost:3001/order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(orderData),
-        });
+        const response = await axios.post('http://localhost:3001/order', orderData)
+
         if (response.ok) {
             console.log('Tilaus lähetetty');
         } else {
