@@ -9,17 +9,17 @@ const OrderForm = () => {
 
     const customerId = customerData.value.customer_id;
     const cartProducts = cartSignal.value;
-
+        
     console.log(customerData.value);
     console.log(cartSignal.value);
-
+        
     const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const orderData = {
-        customerId,
-        cartProducts,
-    };
+        e.preventDefault();
+        
+        const orderData = {
+            customerId,
+            cartProducts,
+            };
 
     try {
         const response = await axios.post('http://localhost:3001/order', orderData)
