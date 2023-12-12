@@ -13,13 +13,13 @@ const SearchBar = () => {
 
   return (
     <div>
-      <input
+      <input className='searchbar'
         type="text"
         placeholder="Etsi tuotteita"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <button onClick={handleSearch}>Hae</button>
+      <button className="searchbar-button" onClick={handleSearch}>Hae</button>
     </div>
   );
 };

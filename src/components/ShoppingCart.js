@@ -67,7 +67,7 @@ function CartContents() {
               <div className="cart-item-details">
                 <Card.Title>{p.product_name}</Card.Title>
                 <Card.Text>
-                  <p>{p.product_description}</p>
+                  {p.product_description}
                 </Card.Text>
                 <Card.Text>
                   <button className="decrement-button" onClick={() => handleDecrement(p.id)}>-</button>
