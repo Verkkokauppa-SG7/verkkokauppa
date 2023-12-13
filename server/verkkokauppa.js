@@ -458,4 +458,50 @@ app.delete('/feedback/:id', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  
+// Tämä on Katrin tietokantaohjelmointia varten tehty koodi
+// Lisää arvostelu tietokantaan
+app.post('/reviews', async (req, res) => {
+    try {
+        // Poimitaan tarvittavat tiedot
+        const { name, productId, rating, comment } = req.body;
+        console.log(req.body);
+
+        // Luodaan tietokantayhteys
+        const connection = await mysql.createConnection(conf);
+        // Suoritetaan SQL-kysely arvostelun lisäämiseksi tietokantaan
+        await connection.execute('INSERT INTO reviews (name, productId, rating, comment) VALUES (?, ?, ?, ?)',
+            [ name, productId, rating, comment]);
+
+        // Lähetetään onnistumisviesti
+        res.status(200).json({ message: 'Arvostelu lisätty onnistuneesti' });
+    } catch (error) {
+        // Käsitellään virheet
+        console.error('Virhe arvostelun lisäämisessä:', error);
+        res.status(500).json({ error: error.message} );
+    }
+});
+
+// Tämä on Katrin tietokantaohjelmointia varten tehty koodi
+// Hae arvostelut tietylle tuotteelle
+app.get('/reviews/:productId', async (req, res) => {
+    try {
+        // Poimitaan productId
+        const productId = req.params.productId;
+
+        // Luodaan tietokantayhteys
+        const connection = await mysql.createConnection(conf);
+        // Suoritetaan SQL-kysely arvostelujen hakemiseksi tietylle tuotteelle
+        const [reviewsRows] = await connection.execute('SELECT * FROM reviews WHERE productId = ?',
+            [productId]);
+
+        // Lähetetään onnistunut vastaus arvosteluista
+        res.status(200).json({ reviews: reviewsRows });
+    } catch (error) {
+        // Käsitellään virheet
+        console.error('Virhe arvostelujen hakemisessa:', error);
+        res.status(500).json({ error: error.message });
+    }
+});
   

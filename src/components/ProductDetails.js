@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import '../styles/ProductDetails.css'
 import { cartSignal } from './signals';
+import Review from './Review';
+import ReviewsList from './ReviewsList';
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -89,6 +91,10 @@ const ProductDetails = () => {
             Tuote lisätty ostoskoriin!
           </div>
         )}
+      </div>
+      <div className="product-reviews-container">
+        <Review productId={product.id} />
+        <ReviewsList productId={product.id} />
       </div>
     </div>
   );
