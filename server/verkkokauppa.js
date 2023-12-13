@@ -237,7 +237,7 @@ app.post('/order', async (req, res) => {
         const orderId = info.insertId;
 
         for (const product of order.products) {
-            await connection.execute("INSERT INTO order_line (order_id, product_id, quantity) VALUES (?,?,?)",[orderId, product.id, product.quantity]);            
+            await connection.execute("INSERT INTO order_line (order_id, product_id, quantity) VALUES (?,?,?)",[orderId, product.productId, product.quantity]);            
         }
 
         connection.commit();
