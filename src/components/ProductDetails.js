@@ -54,14 +54,14 @@ const ProductDetails = () => {
       const prod = cartSignal.value.find((prod) => prod.id === p.id)
 
       if (prod) {
-        prod.count++
+        prod.quantity++
         cartSignal.value = [...cartSignal.value]
       } else {
-        cartSignal.value = [...cartSignal.value, { ...p, count: 1 }]
+        cartSignal.value = [...cartSignal.value, { ...p, quantity: 1 }]
       }
     } else {
       // Jos cartSignal.value on undefined, aseta se tyhjäksi taulukoksi ja lisää tuote
-      cartSignal.value = [{ ...p, count: 1 }]
+      cartSignal.value = [{ ...p, quantity: 1 }]
     }
 
     // Aseta tila, että tuote on lisätty ostoskoriin

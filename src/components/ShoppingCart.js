@@ -5,10 +5,12 @@ import { Card } from "react-bootstrap";
 import OrderButton from "./OrderButton";
 
 const ShoppingCart = () => {
+  const cartProductCount = cartSignal.value ? cartSignal.value.length : 0;
 
   return (
     <div>
       <h1>Ostoskori</h1>
+      <p>Ostoskorissa on {cartProductCount} tuotetta.</p>
       <CartContents />
       <OrderButton />
     </div>
@@ -25,27 +27,27 @@ function CartContents() {
 
   // Lasketaan ostoskorin yhteyshinta
   const calculateTotalPrice = () => {
-    return cartProducts.reduce((total, p) => total + (p.count * p.price), 0).toFixed(2)
+    return cartProducts.reduce((total, p) => total + (p.quantity * p.price), 0).toFixed(2)
   }
 
   // Lasketaan kunkin tuotteen yhteyshinta
   const calculateProductTotal = (p) => {
-    return (p.count * p.price).toFixed(2)
+    return (p.quantity * p.price).toFixed(2)
   }
 
   // Vähennetään tai lisätään ostoskorissa olevien tuotteiden määrää
   const handleIncrement = (productId) => {
     const updatedCart = cartProducts.map((p) =>
-      p.id === productId ? { ...p, count: p.count + 1 } : p
+      p.id === productId ? { ...p, quantity: p.quantity + 1 } : p
     )
     cartSignal.value = updatedCart
   }
 
   const handleDecrement = (productId) => {
     const updatedCart = cartProducts.map((p) =>
-      p.id === productId ? { ...p, count: p.count > 1 ? p.count - 1 : 0 } : p
+      p.id === productId ? { ...p, quantity: p.quantity > 1 ? p.quantity - 1 : 0 } : p
     )
-    const filteredCart = updatedCart.filter((p) => p.count > 0)
+    const filteredCart = updatedCart.filter((p) => p.quantity > 0)
     cartSignal.value = filteredCart
   }
 
@@ -71,7 +73,7 @@ function CartContents() {
                 </Card.Text>
                 <Card.Text>
                   <button className="decrement-button" onClick={() => handleDecrement(p.id)}>-</button>
-                  <span> {p.count} </span>
+                  <span> {p.quantity} </span>
                   <button className="increment-button" onClick={() => handleIncrement(p.id)}>+</button>
                 </Card.Text>
               </div>

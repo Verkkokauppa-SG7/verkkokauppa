@@ -16,9 +16,9 @@ const OrderForm = () => {
 
     const orderData = {
         customerId,
-        cartProducts: cartSignal.value.map((product) => ({
+        products: cartSignal.value.map((product) => ({
             productId: product.id,
-            quantity: product.length,
+            quantity: product.quantity,
         })),
         };
         
