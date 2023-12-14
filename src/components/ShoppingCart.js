@@ -5,12 +5,10 @@ import { Card } from "react-bootstrap";
 import OrderButton from "./OrderButton";
 
 const ShoppingCart = () => {
-  const cartProductCount = cartSignal.value ? cartSignal.value.length : 0;
 
   return (
     <div>
       <h1>Ostoskori</h1>
-      <p>Ostoskorissa on {cartProductCount} tuotetta.</p>
       <CartContents />
       <OrderButton />
     </div>
