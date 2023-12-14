@@ -4,7 +4,6 @@ import { cartSignal } from "./signals";
 import { customerData } from "./CustomerSignal";
 
 //Tilauksen lähettäminen tietokantaan
-//Tämä ei vielä toimi täysin: tarvittava data ei tule oikein tai ollenkaan?
 const OrderForm = () => {
 
     console.log(customerData.value);
@@ -30,10 +29,10 @@ const OrderForm = () => {
 
         if (response.status === 200) {
             console.log('Tilaus lähetetty');
-            return "Tilaus lähetetty";
+            alert("Tilaus lähetetty");
         } else {
             console.error('Tilauksen lähetyksessä tapahtui virhe');
-            return "Tilauksen lähetyksessä tapahtui virhe";
+            alert("Tilauksen lähetyksessä tapahtui virhe");
         }
     } catch (error) {
         console.error('Virhe tilauksen lähetyksessä:', error);
