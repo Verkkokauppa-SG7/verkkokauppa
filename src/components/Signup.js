@@ -11,6 +11,7 @@ function Signup() {
         pw: '',
     })
 
+    const [error, setError] = useState('')
     const navigate = useNavigate()
 
     const handleInput = (e) => {
@@ -21,6 +22,15 @@ function Signup() {
     // Lomakkeen lähettäminen
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setError('')
+
+        const { fname, lname, username, pw } = formData
+
+        // Tarkista, ovatko kaikki kentät täytetty
+        if (!fname || !lname || !username || !pw) {
+            setError('Kaikki tiedot ovat pakollisia.')
+            return
+        }
 
         try {
             // Lähetä POST-pyyntö rekisteröitymispolulle formin tiedoilla
@@ -34,6 +44,7 @@ function Signup() {
             }
         } catch (error) {
             console.error(error)
+            setError('Virhe rekisteröitymisessä. Yritä uudelleen!')
         }
     };
 
@@ -65,6 +76,11 @@ function Signup() {
                     </div>
                     <button type="submit" className='btn btn-default border w-100'>Luo käyttäjätunnus</button>
                 </form>
+                {error && (
+                    <div className="alert alert-danger" role="alert">
+                        {error}
+                    </div>
+                )}
             </div>
         </div>
     )
