@@ -468,6 +468,16 @@ app.post('/reviews', async (req, res) => {
         const { name, productId, rating, comment } = req.body;
         console.log(req.body);
 
+        // Tietojen tarkistus ja virheenkäsittely
+        // Ei lisätä arvostelua, jos jokin tieto puuttuu tai arvosana on asetettu väärin
+        if (!name || !productId || !rating || !comment) {
+            return res.status(400).json({ error: 'Kaikki tiedot vaaditaan' })
+        }
+
+        if (isNaN(rating) || rating < 1 || rating > 5) {
+            return res.status(400).json({ error: 'Arvosanan on oltava välillä 1-5' })
+        }
+
         // Luodaan tietokantayhteys
         const connection = await mysql.createConnection(conf);
         // Suoritetaan SQL-kysely arvostelun lisäämiseksi tietokantaan
